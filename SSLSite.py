@@ -132,7 +132,6 @@ class SSLSite:
 # Site = SSLSite()
 # print(Site.URLLabel())  
 print("objcet passed")  
-# # Using setters to update properties
-# person.first_name = "Jane"
-# person.last_name = "Smith"
-# print(person.full_name())  # Output: Jane Smith
+# Using setters to update properties
+# X.property = value
+# print(objectname.objectgetter())  # Output: property
