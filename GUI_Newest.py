@@ -5,7 +5,7 @@ from SSLSite import *
 propertyHashMap = {}
 
 
-def gui1():
+def gui1(Number_of_panes):
     main_window = Tk() 
 
     #To do: add feature where multiple websites can be added#
@@ -16,35 +16,23 @@ def gui1():
     SubjectValue = Label(main_window, text = propertyHashMap['subject'])
     SubjectValue.grid(row = 1, column = 2)
 
-    IssuerLabel = Label(main_window, text = " issuer ")
-    IssuerLabel.grid(row = 0, column = 3)
-    # IssuerValue = Label(main_window, text = keyValReturn(dict, "issuer"))
-    # IssuerValue.grid(row = 1, column = 3)
+
+    subjectAltNameLabel = Label(main_window, text = " subjectAltName ")
+    subjectAltNameLabel.grid(row = 0, column = 8)
+    # SubjectAltNameValue = Label(main_window, text = keyValReturn(dict, "subjectAltName"))
+    # SubjectAltNameValue.grid(row = 1, column = 8)
 
     VersionLabel = Label(main_window, text = " version ")
     VersionLabel.grid(row = 0, column = 4)
     # VersionValue = Label(main_window, text = keyValReturn(dict, "version"))
     # VersionValue.grid(row = 1, column = 4)
 
-    serialNumberLabel = Label(main_window, text = " serialNumber ")
-    serialNumberLabel.grid(row = 0, column = 5)
-    # serialNumberValue = Label(main_window, text = keyValReturn(dict, "serialNumber"))
-    # serialNumberValue.grid(row = 1, column = 5)
-
-    notBeforeLabel = Label(main_window, text = " notBefore ")
-    notBeforeLabel.grid(row = 0, column = 6)
-    # notBeforeValue = Label(main_window, text = keyValReturn(dict, "notBefore"))
-    # notBeforeValue.grid(row = 1, column = 6)
-
     notAfterLabel = Label(main_window, text = " notAfter ")
     notAfterLabel.grid(row = 0, column = 7)
     # notAfterValue = Label(main_window, text = keyValReturn(dict, "notAfter"))
     # notAfterValue.grid(row = 1, column = 7)
 
-    subjectAltNameLabel = Label(main_window, text = " subjectAltName ")
-    subjectAltNameLabel.grid(row = 0, column = 8)
-    # SubjectAltNameValue = Label(main_window, text = keyValReturn(dict, "subjectAltName"))
-    # SubjectAltNameValue.grid(row = 1, column = 8)
+
 
     OCSPLabel = Label(main_window, text = " OCSP ")
     OCSPLabel.grid(row = 0, column = 9)
@@ -55,11 +43,6 @@ def gui1():
     caIssuerLabel.grid(row = 0, column = 10)
     # caIssuerValue = Label(main_window, text = keyValReturn(dict, "caIssuer"))
     # caIssuerValue.grid(row = 1, column = 10)
-
-    crlDistributionPointsLabel = Label(main_window, text = " crlDistributionPoints ")
-    crlDistributionPointsLabel.grid(row = 0, column = 11)
-    # crlDistributionPointsValue = Label(main_window, text = keyValReturn(dict, "crlDistributionPoints"))
-    # crlDistributionPointsValue.grid(row = 1, column = 11)
 
     URLField = Entry(main_window, width = 25, text="URL: ")
     URLField.grid(row = 2, column = 0)          
