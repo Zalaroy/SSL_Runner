@@ -4,6 +4,7 @@ from SSLSite import *
 
 propertyHashMap = {}
 
+
 def gui1():
     main_window = Tk() 
 
@@ -69,7 +70,6 @@ def gui1():
     main_window.mainloop()
 
 def URLEntryOnClick(URLField):      
-
     global propertyHashMap
     ctx = ssl.create_default_context()
     with ctx.wrap_socket(socket.socket(), server_hostname = URLField) as s:
@@ -101,12 +101,9 @@ def URLEntryOnClick(URLField):
         
       
 
-def objectPopulation():
-    Site = SSLSite("zxzxc", "yds", "sdfy", "Sdf", "dsf", "sdf", "sdf", "sdf")
-    Site.SetURLLabel()
 
 def main():
     gui1()
-        
+
 if __name__ == '__main__':
     main() 

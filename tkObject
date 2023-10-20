@@ -1,0 +1,42 @@
+import tkinter as tk
+
+# Your class
+class ui_Labels():
+    '''This class sets the baseline characteristics 
+    for the widgets, including font, font size, and colors
+    '''
+
+    # Attributes
+    varFont = "Calibri"
+    fontSize = 14
+    varFG = "#F2F2F2"
+    varBG = "#3b3b3b"
+    
+    # Constructor
+    def __init__(self, parent, name, varText):
+        self.parent  = parent
+        self.name = name
+        self.varText = varText
+
+        self.label = tk.Label(
+            parent, 
+            text = varText, 
+            fg = self.varFG, 
+            bg = self.varBG, 
+            font = (self.varFont, self.fontSize)
+            )
+
+    # Allows you to grid as you would normally
+    # Can subsitute pack() here or have both class methods
+    def grid(self, **kwargs):
+        self.label.grid(kwargs)
+
+
+# Main GUI
+root = tk.Tk()
+
+# Create an instance of your class
+sectionHeader = ui_Labels(root, "Section Header","Magic XML Iterator")
+sectionHeader.grid(row=1, column=2)
+
+root.mainloop()
