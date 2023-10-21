@@ -1,12 +1,7 @@
 import sys
-import GUI_Newest 
-import SSLSite
+import GUI 
 import TestObject
 import ssl, socket, sys, tkinter, json
-
-def ocjectPopulation(x, y, z,):
-    Site = SSLSite("zxzxc", "yds", "sdfy", "Sdf", "dsf", "sdf", "sdf", "sdf")
-    Site.SetURLLabel()
 
 def main():
     #logic to parse command-line arguments
@@ -19,26 +14,27 @@ def main():
 
     if len(args_list) > 1:
         # If there are multiple items separated by commas, consider them as separate arguments
-        i = 0
         for arg in args_list:            
-            TestObject.TestObject(arg)
-            arg = TestObject.TestObject(arg, "IssuerLabel")
-            i = i + 1
-        GUI_Newest.gui1()        
-    elif len(args_list) == 1:
-        SSLLinfo(arg)
-        arg = TestObject.TestObject(args_list, "IssuerLabel")   
+            new_dict = {}
+            SSL_Dict = Pull_SSL_Info(arg)
+            SSL_Object = TestObject.TestObject(SSL_Dict['subject'], SSL_Dict['subjectAltName'], SSL_Dict['version'], SSL_Dict['notAfter'], SSL_Dict['OCSP'], SSL_Dict['caIssuers'])   
+            GUI.gui(SSL_Object._SubjectLabel, SSL_Object._SubjectAltNameLabel, SSL_Object.VersionLabel, SSL_Object.NotAfterLabel, SSL_Object.OCSPLabel, SSL_Object.CaIssuerLabel)        
+    elif len(args_list) == 1:        
+        SSL_Dict = Pull_SSL_Info(args_list[0])
+        SSL_Object = TestObject.TestObject(SSL_Dict['subject'], SSL_Dict['subjectAltName'], SSL_Dict['version'], SSL_Dict['notAfter'], SSL_Dict['OCSP'], SSL_Dict['caIssuers'])   
+        GUI.gui(SSL_Object._SubjectLabel, SSL_Object._SubjectAltNameLabel, SSL_Object.VersionLabel, SSL_Object.NotAfterLabel, SSL_Object.OCSPLabel, SSL_Object.CaIssuerLabel) 
     else:
         # If there is something else going on, raise an error
         raise ValueError("major error.")    
     # GUI_Newest.main
 
-def SSLLinfo(URLField):
+def Pull_SSL_Info(URLField):
     ctx = ssl.create_default_context()
     with ctx.wrap_socket(socket.socket(), server_hostname = URLField) as s:
-        s.connect((URLField, 443))
+        s.connect((URLField, 443))    
         results = json.dumps(s.getpeercert(), indent = 4)
         parsed = json.loads(results)
+        return parsed
 
 if __name__ == '__main__':
     main() 

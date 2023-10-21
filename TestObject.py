@@ -1,26 +1,12 @@
 class TestObject:
-    def __init__(self, URLLabel, SubjectLabel, SubjectAltNameLabel, VersionLabel, NotAfterLabel, OCSPLabel, CaIssuerLabel):
-        self._URLLabel = URLLabel  # Private attribute with a single underscore convention
+    def __init__(self, SubjectLabel, SubjectAltNameLabel, VersionLabel, NotAfterLabel, OCSPLabel, CaIssuerLabel):
+
         self._SubjectLabel = SubjectLabel  # Private attribute with a single underscore convention 
         self._SubjectAltNameLabel = SubjectAltNameLabel  # Private attribute with a single underscore convention           
         self._VersionLabel = VersionLabel  # Private attribute with a single underscore convention
         self._NotAfterLabel = NotAfterLabel  # Private attribute with a single underscore convention
         self._OCSPLabel = OCSPLabel  # Private attribute with a single underscore convention
         self._CaIssuerLabel = CaIssuerLabel  # Private attribute with a single underscore convention
-
-
-#Property getter and setter for URLLabel
-    @property
-    def URLLabel(self):
-        return self._URLLabel * 2
-
-    @URLLabel.setter
-    def URLLabel(self, value):
-        if not isinstance(value, str):
-            print("Must be a string.")
-        else:
-            self._URLLabel = value
-
 
 #Property getter and setter for SubjectLabel
     @property
@@ -97,11 +83,11 @@ class TestObject:
 
 
 # Create an instance of the Circle class
-Site = TestObject("www.google.com", "OSCP")
+# Site = TestObject("www.google.com", "OSCP")
 
 # Get the diameter property using the getter method
-print("URLLabel:", Site.URLLabel)
-print("IssuerLabel:", Site._IssuerLabel)
+# print("URLLabel:", Site.URLLabel)
+# print("IssuerLabel:", Site._IssuerLabel)
 
 
 
