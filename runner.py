@@ -1,9 +1,19 @@
 import sys
-import GUI 
+import gui 
 import TestObject
 import ssl, socket, sys, tkinter, json
 
+def banner():  
+    print("  ________   _________             ________                                          ")
+    print(" /  _____/  / ______//            /       /                                          ")
+    print(" | |____   |_____ / /            /     __/       __    __    _________  _________    ")
+    print("     / /     / /// /            /  /\  \        / /   / /   /   _    / /   _    /    ")
+    print("____/ /_____/ /// /_______     /  /  \  \____  / /___/ /_  /   //   / /   //   /     ")
+    print("____ /_______//__________/    /__/    \ ____/ /_________/ /___//___/ /___//___/      ")      
+
+
 def main():
+    banner
     #logic to parse command-line arguments
     if len(sys.argv) <= 1:
         raise ValueError("Please provide at least one website to parse, after calling the program name. Specfically, if you want to parse SSL information from more than one site, you must seperate the sites by comma(s). Example: SSL_Info siteX.com,siteY.com,siteZ.com")
@@ -18,11 +28,12 @@ def main():
             new_dict = {}
             SSL_Dict = Pull_SSL_Info(arg)
             SSL_Object = TestObject.TestObject(SSL_Dict['subject'], SSL_Dict['subjectAltName'], SSL_Dict['version'], SSL_Dict['notAfter'], SSL_Dict['OCSP'], SSL_Dict['caIssuers'])   
-            GUI.gui(SSL_Object._SubjectLabel, SSL_Object._SubjectAltNameLabel, SSL_Object.VersionLabel, SSL_Object.NotAfterLabel, SSL_Object.OCSPLabel, SSL_Object.CaIssuerLabel)        
+            gui.gui(SSL_Object._SubjectLabel, SSL_Object._SubjectAltNameLabel, SSL_Object.VersionLabel, SSL_Object.NotAfterLabel, SSL_Object.OCSPLabel, SSL_Object.CaIssuerLabel)        
     elif len(args_list) == 1:        
         SSL_Dict = Pull_SSL_Info(args_list[0])
+        print(SSL_Dict)
         SSL_Object = TestObject.TestObject(SSL_Dict['subject'], SSL_Dict['subjectAltName'], SSL_Dict['version'], SSL_Dict['notAfter'], SSL_Dict['OCSP'], SSL_Dict['caIssuers'])   
-        GUI.gui(SSL_Object._SubjectLabel, SSL_Object._SubjectAltNameLabel, SSL_Object.VersionLabel, SSL_Object.NotAfterLabel, SSL_Object.OCSPLabel, SSL_Object.CaIssuerLabel) 
+        gui.gui(SSL_Object._SubjectLabel, SSL_Object._SubjectAltNameLabel, SSL_Object.VersionLabel, SSL_Object.NotAfterLabel, SSL_Object.OCSPLabel, SSL_Object.CaIssuerLabel) 
     else:
         # If there is something else going on, raise an error
         raise ValueError("major error.")    

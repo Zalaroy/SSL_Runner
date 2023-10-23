@@ -9,7 +9,8 @@ def gui(SubjectLabel, SubjectAltNameLabel, VersionLabel,  NotAfterLabel, OCSPLab
     main_window = Tk() 
 
     URLLabel = Label(main_window, text = " URL ").grid(row = 0, column = 0)
-    
+    # URLValue = Label(main_window, text = )
+
     SubjectLabel = Label(main_window, width = 25, text = " subject ")
     SubjectLabel.grid(row = 0, column = 2)
     SubjectValue = Label(main_window, text = SubjectLabel)
@@ -41,8 +42,8 @@ def gui(SubjectLabel, SubjectAltNameLabel, VersionLabel,  NotAfterLabel, OCSPLab
     caIssuerValue = Label(main_window, text = CaIssuerLabel)
     caIssuerValue.grid(row = 1, column = 10)
 
-    URLField = Entry(main_window, width = 25, text="URL: ")
-    URLField.grid(row = 2, column = 0)          
+    # URLField = Entry(main_window, width = 25, text="URL: ")
+    # URLField.grid(row = 2, column = 0)          
    
     # URLButton = Button(text = "Analyze URL", command = lambda: URLEntryOnClick(URLField.get()))
     # URLButton.grid(row = 2, column = 1)
